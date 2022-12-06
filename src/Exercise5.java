@@ -2,6 +2,10 @@ import java.util.Scanner;
 
 public class Exercise5 {
     public static void main(String[] args) {
+        startGame();
+    }
+    public static void startGame ()
+    {
         char [] board = {'1','2','3','4','5','6','7','8','9'};
         createBoard(board);
         int counter = 0;
@@ -63,6 +67,7 @@ public class Exercise5 {
     public static void placeMove (char [] board, int userMove,int moveCounter){
         char turn = whatTurn(moveCounter);
         board[userMove-1]=turn;
+
     }
     public static char whatTurn (int moveCounter)
     {
