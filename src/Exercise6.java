@@ -13,8 +13,41 @@ public class Exercise6 {
            System.out.println("x1=" + solution[0] + ", x2=" + solution[1]);
        }else System.out.println("You entered invalid equation!");
     }
-    public static boolean isValidEquation (String userEquation) {
-        boolean isValid=true;
+    public static boolean isValidEquation (String e) {
+        boolean isValid=false;
+        String cPart;
+        if (e.contains("x^2") || e.contains("=0"))
+        {
+            String aPart = e.substring(0,e.indexOf("x^2"));
+            String bPart = e.substring(e.indexOf("^2")+3,e.indexOf("x+"));
+            if (bPart.equals("2")) {
+                cPart = e.substring(e.indexOf(bPart) + 5, e.indexOf("="));
+            }else cPart = e.substring(e.indexOf(bPart) +3, e.indexOf("="));
+
+
+            if (e.startsWith("x")) {
+                aPart = "1";
+            }else if (e.startsWith("-x")){
+                aPart="1";
+            }else if (e.startsWith("-")){
+                aPart = aPart.substring(1);
+            }
+            if (aPart.matches("[0-9]")){
+                if (bPart.startsWith("x")){
+                    bPart="1";
+                }else if (bPart.startsWith("-x")){
+                    bPart = "-1";
+                }else if (bPart.startsWith("-")){
+                    bPart.substring(1);
+                }
+                if (bPart.matches("[0-9]")){
+                    if (cPart.matches("[0-9]")){
+                        isValid=true;
+                    }
+                }
+        }
+
+       }else isValid=false;
 
         return isValid;
     }
